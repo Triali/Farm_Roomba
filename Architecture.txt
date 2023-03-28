@@ -1,0 +1,61 @@
+Main.pay
+
+start shutdown.py(will run separatly)
+
+while(1)
+	Wallfollow getDataPoints
+	Wallfollow determineAction
+	if(forward)
+		Wallfollow getStepperCommands
+		Stepper update stepper commands 
+    
+	else if(pick Cotton)
+		Wallfollow getCottonPostion
+		Arm PickCotton
+    wait till done
+    
+	else if(turn corner)
+		Wallfollow TurnCorner
+		wait till done 
+
+
+___________
+Wallfollow class
+
+getDataPoints Function
+	Read in and store the data from the RealSense camera
+
+determineAction Function
+	Interparte the data stored and return an action to take based on that data,
+	
+	Actions that could be returned
+	forward
+	pick cotton
+	turn corrner
+
+getStepperCommands
+	Return the velocity and dTheta 
+
+get cotton position
+	return the position of a cotton cluster
+  
+_______________
+
+
+Stepper class
+
+update stepper funtion
+	Input velocity and dTheta
+	change the steeper motor according to input
+
+turnCorner function
+	would give the stepper motors a series of commands that would let them turn a corner. 
+  Return done
+______________
+
+
+Arm class
+
+PickCotton
+  picks the cotton
+  Return done
